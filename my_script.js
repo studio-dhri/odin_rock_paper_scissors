@@ -26,20 +26,25 @@ function buttonClicked(str) {
         container.appendChild(roundResult);
     }
 
-
     else { console.log("5 rounds played"); }
+
     if (roundNumber === 5) {
-        console.log("Total score - Computer: " + computerScore + " Human: " + humanScore);
+        const gameScore = document.createElement("h3");
+        gameScore.textContent = "Total score - Computer: " + computerScore + "You: " + humanScore;
+        container.appendChild(gameScore);
+
+        const gameResult = document.createElement("h2");
+
         if (computerScore === humanScore) {
-            console.log("It is a tie!")
+            gameResult.textContent = "It is a tie!";
         }
-        else if (computerScore > humanScore) {
-            console.log("Human wins the game!")
+        else if (computerScore < humanScore) {
+            gameResult.textContent = "You win the game!";
         }
         else {
-            console.log("Computer wins the game!")
-
+            gameResult.textContent = "Computer wins the game!";
         }
+        container.appendChild(gameResult);
     }
     roundNumber++;
 }
@@ -82,10 +87,6 @@ function playRound(hChoice) {
     let cChoice = getCompputerChoice();
     computerChoice = cChoice;
     humanChoice = hChoice;
-
-    //console.log("Round: " + roundNumber);
-    //console.log("Computer: " + cChoice);
-    //console.log("Human: " + hChoice);
 
     if (cChoice === hChoice) {
         roundResult.textContent = "This round is a tie!";
